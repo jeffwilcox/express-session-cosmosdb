@@ -37,7 +37,7 @@ require('dotenv').config(); // load .env keys into process environment variables
 
 import express from 'express';
 import session from 'express-session';
-import CosmosSessionStore from '@jeffwilcox/express-session-cosmosdb';
+import CosmosSessionStore from 'express-session-cosmosdb';
 
 // ... standard Express middleware ...
 
