@@ -30,7 +30,11 @@ When creating or configuring a new container:
 While using Express, you simply initialize a new instance of the `CosmosSessionStore` object with
 a set of properties, and your Cosmos DB will be used for storing the session.
 
+To protect keys, this sample code assumes you are using the npm `dotnev` and `.env` files.
+
 ```
+require('dotenv').config(); // load .env keys into process environment variables
+
 import express from 'express';
 import session from 'express-session';
 import CosmosSessionStore from '@jeffwilcox/express-session-cosmosdb';
@@ -38,15 +42,15 @@ import CosmosSessionStore from '@jeffwilcox/express-session-cosmosdb';
 // ... standard Express middleware ...
 
 const store = new CosmosSessionStore({
-  endpoint: 'https://yourcosmosdbendpoint.documents.azure.com:443/',
-  database: 'yourdatabase',
-  collection: 'yourcontainer',
-  key: 'yourkeygoeshere',
+  endpoint: process.env.COSMOS_SESSION_ENDPOINT,
+  database: process.env.COSMOS_SESSION_DATABASE,
+  collection: process.env.COSMOS_SESSION_CONTAINER,
+  key: process.env.COSMOS_SESSION_KEY,
 });
 
 const sess = {
   store,
-  secret: 'keyboard kitty cat goes here',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
   cookie: {
