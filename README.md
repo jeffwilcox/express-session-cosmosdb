@@ -1,4 +1,4 @@
-# express-session-cosmosdb
+# express-session-cosmosdb [obviously, not maintained]
 
 This is yet another implementation of an Express session provider, this one targeting 
 Azure Cosmos DB.
